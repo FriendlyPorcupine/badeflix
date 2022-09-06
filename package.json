@@ -1,0 +1,61 @@
+{
+  "name": "badeflix",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist&&nest build",
+    "start": "node dist/main",
+    "start:dev": "rimraf dist&&nest start --watch",
+    "docker:dev": "docker compose -f docker-compose.yml --env-file src/config/env/.env -p badeflix-dev up -d",
+    "prisma:generate": "prisma generate --schema=./src/config/prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=./src/config/prisma/schema.prisma",
+    "prisma:studio": "prisma studio --schema=./src/config/prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@nestjs/common": "^9.0.11",
+    "@nestjs/config": "^2.2.0",
+    "@nestjs/core": "^9.0.11",
+    "@nestjs/passport": "^9.0.0",
+    "@nestjs/platform-express": "^9.0.11",
+    "@prisma/client": "^4.3.1",
+    "bcrypt": "^5.0.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "csurf": "^1.11.0",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "helmet": "^6.0.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.6"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^9.1.2",
+    "@trophoria/eslint-config": "^1.0.1",
+    "@trophoria/prettier-config": "^1.0.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/csurf": "^1.11.2",
+    "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.5",
+    "@types/node": "^18.7.15",
+    "@types/passport-local": "^1.0.34",
+    "@vegardit/prisma-generator-nestjs-dto": "^1.5.1",
+    "prisma": "^4.3.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.2"
+  },
+  "prettier": "@trophoria/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@trophoria/eslint-config"
+    ],
+    "ignorePatterns": [
+      "**/dist/*",
+      "**/@generated/*"
+    ],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off"
+    }
+  }
+}
