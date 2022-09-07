@@ -9,7 +9,7 @@ export class WeatherService {
       {
         params: {
           q: city,
-          appid: 'xxx',
+          appid: 'f4406d70189c3450d20196205788f147',
           limit: 1,
         },
       },
@@ -26,7 +26,7 @@ export class WeatherService {
         params: {
           lat,
           lon,
-          appid: 'xxx',
+          appid: 'f4406d70189c3450d20196205788f147',
           units: 'metric',
         },
       },
