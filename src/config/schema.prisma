@@ -2,6 +2,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator dto_generator {
+  provider        = "prisma-generator-nestjs-dto"
+  output          = "@generated/"
+  reExport        = "true"
+  classValidation = "true"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -9,7 +16,11 @@ datasource db {
 
 model User {
   id        String   @id @default(uuid())
+  /// @IsEmail()
+  /// @description The email of the user
   email     String   @unique
+  /// @IsNotEmpty()
+  /// @description The password of the user
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())

@@ -2,10 +2,25 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "package.json": ".editorconfig,.gitignore,tsconfig.build.json,tsconfig.json"
+    "package.json": ".editorconfig,.gitignore,tsconfig.build.json,tsconfig.json,docker-compose.yml,.env"
   },
   "files.exclude": {
     "**/dist": true,
-    "**/.vscode": true
+    "**/.vscode": false
+  },
+  "material-icon-theme.folders.associations": {
+    "_setup": "config",
+    "strategies": "keys",
+    "dto": "class",
+    "migrations": "database",
+    "decorators": "shader"
+  },
+  "material-icon-theme.files.associations": {
+    "main.ts": "Merlin",
+    "index.ts": "lib",
+    "_index.ts": "lib",
+    "**.interceptor.ts": "nest-middleware",
+    "**.strategy.ts": "opa",
+    "**.serializer.ts": "opa"
   }
 }

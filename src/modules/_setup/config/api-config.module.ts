@@ -9,7 +9,7 @@ import { ApiConfigService } from './api-config.service';
     ConfigModule.forRoot({
       isGlobal: true,
       cache: false,
-      envFilePath: 'config/env/.env',
+      envFilePath: '.env',
     }),
   ],
   providers: [ApiConfigService],
