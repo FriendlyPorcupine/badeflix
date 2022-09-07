@@ -1,0 +1,13 @@
+.center-vertical {
+  display: flex;
+  justify-content: center;
+  height: 95vh;
+}
+
+.weather-form {
+  width: 25rem;
+}
+
+.full-width {
+  width: 100%;
+}
