@@ -9,7 +9,7 @@ form.addEventListener('submit', async (event) => {
 //BUTTON update and delete ???
 
   try {
-    const {data} = await axios.delete('v1/user/me', {
+    const {data} = await axios.delete('v1/user/user', {
       email,
       password
     });
