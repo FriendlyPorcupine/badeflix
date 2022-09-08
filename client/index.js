@@ -37,7 +37,7 @@ const initialize = async () => {
       'v1/weather/city',
       {
         params: {
-          city
+          city,
         },
       },
     );

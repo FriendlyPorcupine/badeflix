@@ -7,7 +7,7 @@ form.addEventListener('submit', async (event) => {
   const password = document.querySelector('#password').value;
 
   try {
-    const {data} = await axios.delete('v1/user/user', {
+    const {data} = await axios.delete('v1/user/me', {
       email,
       password
     });
