@@ -6,6 +6,8 @@ form.addEventListener('submit', async (event) => {
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
 
+//BUTTON update and delete ???
+
   try {
     const {data} = await axios.delete('v1/user/me', {
       email,

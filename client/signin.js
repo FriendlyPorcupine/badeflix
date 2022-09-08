@@ -16,7 +16,7 @@ form.addEventListener('submit', async (event) => {
 
   } catch(_) {
     Toastify({
-      text: "Ungültige Einlogdaten!",
+      text: "Invalid credentials!",
       duration: 3000,
       backgroundColor: "red",
     }).showToast();
