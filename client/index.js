@@ -14,9 +14,11 @@ const initialize = async () => {
   if (isAuth) {
     document.querySelector("#login").style.display = "none";
     document.querySelector("#logout").style.display = "block";
+    document.querySelector("#profile").style.display = "block";
   } else {
     document.querySelector("#login").style.display = "block";
     document.querySelector("#logout").style.display = "none";
+    document.querySelector("#profile").style.display = "none";
   }
 
   // Signout functionality

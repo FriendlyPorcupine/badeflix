@@ -6,6 +6,7 @@ import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
+  // Typescript feature autovervollständigen und Fehlermeldung, dependencies injection
   constructor(private readonly userService: UserService) {}
 
   async validateUser(email: string, pass: string): Promise<User> {

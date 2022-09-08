@@ -3,7 +3,6 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import helmet from 'helmet';
 import passport from 'passport';
 
 import { AppModule } from './app.module';
@@ -38,6 +37,7 @@ const initializeApp = async (app: App, config: ApiConfigService) => {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('v1/api', app, document);
 
+  //each request has to go here to line 50, cookie will be readable, create in contorller
   app.use(cookieParser());
   app.use(
     session({
@@ -46,7 +46,6 @@ const initializeApp = async (app: App, config: ApiConfigService) => {
       saveUninitialized: false,
     }),
   );
-  //app.use(helmet());
   app.use(passport.initialize());
   app.use(passport.session());
 
