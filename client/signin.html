@@ -27,51 +27,24 @@
     <main class="container center-vertical">
 
       <form class="signin-form" id="signin-form">
-        <h2 class="mb-5">Jetzt einloggen!</h2>
+        <h2 class="mb-5">Log in now!</h2>
 
         <div class="form-group">
-          <label for="email">Email Adresse</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email eingeben">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
 
         <div class="form-group">
-          <label for="password">Passwort</label>
-          <input type="password" class="form-control" id="password" placeholder="Passwort eingeben">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password">
         </div>
 
         <small class="form-text text-muted mb-3">
-          Noch keinen Account? Jetzt <a href="/signup.html">registrieren!</a>
+          No account yet? Now <a href="/signup.html">register!</a>
         </small>
 
-        <button type="submit" class="btn btn-primary full-width">Einloggen</button>
+        <button type="submit" class="btn btn-info full-width">Log in</button>
       </form>
     </main>
-
-    <script>
-      const form = document.querySelector('#signin-form');
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const email = document.querySelector('#email').value;
-        const password = document.querySelector('#password').value;
-
-        try {
-          const {data} = await axios.post('v1/user/signin', {
-            email,
-            password
-          });
-
-          window.location.href = "/";
-
-        } catch(_) {
-          Toastify({
-            text: "Ungültige Einlogdaten!",
-            duration: 3000,
-            backgroundColor: "red",
-          }).showToast();
-        }
-      });
-    </script>
   </body>
 </html>
