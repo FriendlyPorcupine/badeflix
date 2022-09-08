@@ -74,7 +74,11 @@ export class UserController {
   @UseGuards(AuthenticatedGuard)
   @Put('/user')
   updateUser(@CurrentUser() user: User, @Body() body: UpdateUserDto) {
-    return this.userService.update(user.id, body);
+    let hash;
+    if (body.password) {
+      hash = hashSync(body.password, 10);
+    }
+    return this.userService.update(user.id, {password: hash, email: body.email});
   }
 
   @UseGuards(AuthenticatedGuard)
