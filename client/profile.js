@@ -7,6 +7,15 @@ form.addEventListener('submit', async (event) => {
   const password = document.querySelector('#password').value;
 
 //BUTTON update and delete ???
+  document.querySelector("#update").addEventListener("click", async (event) => {
+    await axios.post('v1/user/user');
+    window.location.reload();
+  });
+
+  document.querySelector("#delete").addEventListener("click", async (event) => {
+    await axios.delete('v1/user/user');
+    window.location.reload();
+  });
 
   try {
     const {data} = await axios.delete('v1/user/user', {
