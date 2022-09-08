@@ -3,6 +3,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from '../_setup/prisma/prisma.service';
 import { CreateUserDto, UpdateUserDto, User } from 'src/config/@generated';
 
+// The heavy lifting is done in here so that the Controller can stay relatively clean
 @Injectable()
 export class UserService {
   /*private db: PrismaService;

@@ -1,3 +1,5 @@
+//Controllers control incoming requests, something happens and then response
+
 import {
   Body,
   Controller,
@@ -29,6 +31,8 @@ import {CreateUserDto, UpdateUserDto, User} from 'src/config/@generated';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  //@Are Called annotations = decoration(in nestJS)
+  //('ThisIsCalledAFilter') -> This handles routers. If no filter is specified the your-domain.com/
   @Post('/signup')
   @ApiTags('user')
   @ApiCreatedResponse({

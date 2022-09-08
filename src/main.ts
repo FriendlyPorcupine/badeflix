@@ -1,4 +1,4 @@
-//This is the main entrypoint
+//This is the Entrypoint for the whole Programm
 
 import { ValidationPipe, INestApplication as App } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';

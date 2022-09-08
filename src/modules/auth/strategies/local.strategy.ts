@@ -5,6 +5,7 @@ import { Strategy } from 'passport-local';
 
 import { AuthService } from '../auth.service';
 
+// Es gibt auch andere strategies um sich zb mit google einzuloggen
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {

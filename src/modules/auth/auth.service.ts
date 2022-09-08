@@ -4,6 +4,7 @@ import { compareSync } from 'bcrypt';
 
 import { UserService } from '../user/user.service';
 
+//Uservalidierung
 @Injectable()
 export class AuthService {
   // Typescript feature autovervollständigen und Fehlermeldung, dependencies injection
