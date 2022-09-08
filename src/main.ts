@@ -1,3 +1,5 @@
+//This is the main entrypoint
+
 import { ValidationPipe, INestApplication as App } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
