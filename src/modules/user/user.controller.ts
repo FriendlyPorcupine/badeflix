@@ -5,7 +5,7 @@ import {
   UseGuards,
   Get,
   Req,
-  Res,
+  Res, Delete, Put,
 } from '@nestjs/common';
 import {
   ApiConflictResponse,
@@ -23,7 +23,7 @@ import { AuthenticatedGuard } from '../auth/guards/auth.guard';
 import { LocalAuthGuard } from '../auth/guards/local-auth.guard';
 import { UserAlreadyExists } from './errors/user-already-exists';
 import { UserService } from './user.service';
-import { CreateUserDto, User } from 'src/config/@generated';
+import {CreateUserDto, UpdateUserDto, User} from 'src/config/@generated';
 
 @Controller('user')
 export class UserController {
@@ -70,5 +70,16 @@ export class UserController {
   @Get('/me')
   me(@CurrentUser() user: User) {
     return user;
+  }
+  @UseGuards(AuthenticatedGuard)
+  @Put('/user')
+  updateUser(@CurrentUser() user: User, @Body() body: UpdateUserDto) {
+    return this.userService.update(user.id, body);
+  }
+
+  @UseGuards(AuthenticatedGuard)
+  @Delete('/user')
+  deleteUser(@CurrentUser() user: User) {
+    return this.userService.delete(user.id);
   }
 }

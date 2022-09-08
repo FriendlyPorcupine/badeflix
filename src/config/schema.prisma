@@ -3,7 +3,7 @@ generator client {
 }
 
 generator dto_generator {
-  provider        = "prisma-generator-nestjs-dto"
+  provider        = "node node_modules/@brakebein/prisma-generator-nestjs-dto/dist"
   output          = "@generated/"
   reExport        = "true"
   classValidation = "true"
