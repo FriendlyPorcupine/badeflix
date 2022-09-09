@@ -1,0 +1,19 @@
+Dear User,
+
+please ensure to run Yarn and Nestjs (Node) on your machine
+  --> yarn start:dev will start the server
+  Yarn is a package manager that doubles down as project manager. Whether you work on one-shot
+  projects or large monorepos, as a hobbyist or an enterprise user, we've got you covered.
+
+  Yarn is a package manager that doubles down as project manager. Whether you work on one-shot
+  projects or large monorepos, as a hobbyist or an enterprise user, we've got you covered.
+
+Docker will handle our databank
+  --> yarn docker:dev
+  Docker allocates a read-write filesystem to the container, as its final layer. This allows a
+  running container to create or modify files and directories in its local filesystem. Docker creates
+  a network interface to connect the container to the default network, since you did not specify any
+  networking options.
+
+Prisma stores our users and with the following command, you can see all stored data
+  --> yarn prisma:studio
