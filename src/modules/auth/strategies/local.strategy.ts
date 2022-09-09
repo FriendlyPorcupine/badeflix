@@ -11,7 +11,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
     super({ usernameField: 'email' });
   }
-
+//Validate liefert Userobjekt zurück
   async validate(email: string, password: string): Promise<User> {
     return this.authService.validateUser(email, password);
   }

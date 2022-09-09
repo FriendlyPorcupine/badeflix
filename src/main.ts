@@ -11,10 +11,10 @@ import { AppModule } from './app.module';
 import { ApiConfigService } from './modules/_setup/config/api-config.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const config = app.get(ApiConfigService);
+  const app = await NestFactory.create(AppModule);  //Modul von nest
+  const config = app.get(ApiConfigService); //config wird hier aufgerufen
   await initializeApp(app, config);
-  await app.listen(config.get('API_PORT'));
+  await app.listen(config.get('API_PORT'));  //Steht in env.
 }
 
 const initializeApp = async (app: App, config: ApiConfigService) => {
