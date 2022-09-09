@@ -16,6 +16,7 @@ const initialize = async () => {
     document.querySelector("#logout").style.display = "block";
     document.querySelector("#profile").style.display = "block";
   } else {
+    //if not logout and profile won't be visible
     document.querySelector("#login").style.display = "block";
     document.querySelector("#logout").style.display = "none";
     document.querySelector("#profile").style.display = "none";
@@ -24,11 +25,13 @@ const initialize = async () => {
   // Signout functionality
   document.querySelector("#logout").addEventListener("click", async (event) => {
     await axios.get('v1/user/signout');
+    // once logout browser will refresh
     window.location.reload();
   });
 
   const form = document.querySelector('#weather-form');
   form.addEventListener('submit', async (event) => {
+    //without below we won't see acitiviy in console of browser developer settings
     event.preventDefault();
 
     if (!isAuth) return;
