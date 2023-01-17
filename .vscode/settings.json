@@ -2,7 +2,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "package.json": ".editorconfig,.gitignore,tsconfig.build.json,tsconfig.json,docker-compose.yml,.env,next.config.mjs,next-env.d.ts,.eslintrc.js",
+    "package.json": ".editorconfig,.gitignore,tsconfig.build.json,tsconfig.json,docker-compose.yml,.env,.example.env,next.config.mjs,next-env.d.ts,.eslintrc.js",
     "README.md": ".editorconfig,.gitignore"
   },
   "files.exclude": {
