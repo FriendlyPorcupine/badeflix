@@ -7,7 +7,9 @@ import {
   UseGuards,
   Get,
   Req,
-  Res, Delete, Put,
+  Res,
+  Delete,
+  Put,
 } from '@nestjs/common';
 import {
   ApiConflictResponse,
@@ -20,12 +22,12 @@ import {
 import { hashSync } from 'bcrypt';
 import { Request, Response } from 'express';
 
+import { CreateUserDto, UpdateUserDto, User } from 'src/config/@generated';
 import { CurrentUser } from '../auth/decorators/user.decorator';
 import { AuthenticatedGuard } from '../auth/guards/auth.guard';
 import { LocalAuthGuard } from '../auth/guards/local-auth.guard';
 import { UserAlreadyExists } from './errors/user-already-exists';
 import { UserService } from './user.service';
-import {CreateUserDto, UpdateUserDto, User} from 'src/config/@generated';
 
 @Controller('user')
 export class UserController {
@@ -85,7 +87,10 @@ export class UserController {
     if (body.password) {
       hash = hashSync(body.password, 10);
     }
-    return this.userService.update(user.id, {password: hash, email: body.email});
+    return this.userService.update(user.id, {
+      password: hash,
+      email: body.email,
+    });
   }
 
   @UseGuards(AuthenticatedGuard)

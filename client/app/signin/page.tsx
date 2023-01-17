@@ -10,30 +10,30 @@ import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import styles from './page.module.css';
 
-const SignUpPage = () => {
+const SignInPage = () => {
   const emailRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
   const router = useRouter();
 
-  const register = async () => {
+  const signin = async () => {
     const credentials = {
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
     };
-
     try {
-      await axios.post('http://localhost:3000/v1/user/signup', credentials);
-      await axios.post('http://localhost:3000/v1/user/signin', credentials);
+      await axios.post('http://localhost:3000/v1/user/signin', credentials, {
+        withCredentials: true,
+      });
       router.push('/');
     } catch (_) {
-      toast.error('User already exists!');
+      toast.error('Invalid credentials!');
     }
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.form} style={{ width: '75%' }}>
-        <h1>Register now</h1>
+        <h1>Log in now</h1>
         <TextField
           inputRef={emailRef}
           className={styles.input}
@@ -49,14 +49,14 @@ const SignUpPage = () => {
           fullWidth
         />
         <Alert severity="info">
-          Already registered? <Link href="/signin">Log in</Link> now!
+          No account yet? <Link href="/signup">Register</Link> now!
         </Alert>
-        <Button variant="contained" onClick={register}>
-          Register
+        <Button variant="contained" onClick={signin}>
+          Log in
         </Button>
       </div>
     </div>
   );
 };
 
-export default SignUpPage;
+export default SignInPage;

@@ -1,8 +1,12 @@
-import { TodoList } from "../src/features/todo/components/TodoList";
+import { TodoList } from '../src/features/todo/components/TodoList';
 
-const IndexPage =  () => {
-    // @ts-ignore
-    return <div><TodoList /></div>;
-}
+const IndexPage = () => {
+  return (
+    <div>
+      {/* @ts-ignore */}
+      <TodoList />
+    </div>
+  );
+};
 
 export default IndexPage;

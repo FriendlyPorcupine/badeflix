@@ -1,6 +1,6 @@
 //This is the Entrypoint for the whole Programm
 
-import { ValidationPipe, INestApplication as App } from '@nestjs/common';
+import { INestApplication as App, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
@@ -11,14 +11,17 @@ import { AppModule } from './app.module';
 import { ApiConfigService } from './modules/_setup/config/api-config.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);  //Modul von nest
+  const app = await NestFactory.create(AppModule); //Modul von nest
   const config = app.get(ApiConfigService); //config wird hier aufgerufen
   await initializeApp(app, config);
-  await app.listen(config.get('API_PORT'));  //Steht in env.
+  await app.listen(config.get('API_PORT')); //Steht in env.
 }
 
 const initializeApp = async (app: App, config: ApiConfigService) => {
-  app.enableCors();
+  app.enableCors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+  });
   app.setGlobalPrefix('v1');
 
   const swaggerConfig = new DocumentBuilder()

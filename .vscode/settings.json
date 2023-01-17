@@ -2,12 +2,23 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "package.json": ".editorconfig,.gitignore,tsconfig.build.json,tsconfig.json,docker-compose.yml,.env"
+    "package.json": ".editorconfig,.gitignore,tsconfig.build.json,tsconfig.json,docker-compose.yml,.env,next.config.mjs,next-env.d.ts,.eslintrc.js",
+    "README.md": ".editorconfig,.gitignore"
   },
   "files.exclude": {
     "**/dist": true,
-    "**/.vscode": false
+    "**/.vscode": false,
+    "**/.idea": true,
+    "**/.next": true
   },
+  "eslint.validate": ["javascript", "css"],
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "eslint.workingDirectories": ["./server", "./client"],
   "material-icon-theme.folders.associations": {
     "_setup": "config",
     "strategies": "keys",
