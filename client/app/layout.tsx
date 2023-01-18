@@ -7,9 +7,11 @@ import '@fontsource/roboto/700.css';
 
 import { ReactNode, FC } from 'react';
 import { Toaster } from 'react-hot-toast';
-import { Navbar } from '../src/components/Navbar/Navbar';
 
-import './index.css';
+import './layout.css';
+import Navbar from "../src/components/Navbar/Navbar";
+import Footer from "../src/components/Footer/Footer";
+import {Container} from "@mui/material";
 
 interface Props {
   children: ReactNode;
@@ -22,7 +24,12 @@ const RootLayout: FC<Props> = ({ children }) => {
       <body>
         <Toaster />
         <Navbar />
-        {children}
+        <main>
+          <Container maxWidth="md">
+            {children}
+          </Container>
+        </main>
+        <Footer/>
       </body>
     </html>
   );

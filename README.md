@@ -32,5 +32,5 @@ Prisma stores our users and with the following command, you can see all stored d
 
 1. yarn docker:dev
 2. yarn prisma:generate
-3. yarn prisma:migrate
-4: yarn start:dev
+3. yarn prisma:migrate 
+4. yarn start:dev

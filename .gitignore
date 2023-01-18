@@ -3,3 +3,6 @@
 **/@generated/*
 **/dist/
 .idea
+/giulis_useful_info.txt
+**/.vscode/
+**/client/.vscode/

@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* new */
+
+body {
+  background-color: rgb(54, 127, 222);
+  /*background-image: linear-gradient(#d75764, #8fc9e7, #ffffff);*/
+  font-family: 'Arial'; /*@todo giuli*/
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* parts: nav, footer, main */
+header {
+  background-color: #ffffff;
+  padding-bottom: 20px;
+  border-bottom: 3px inset black;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  text-align: right;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+footer {
+  background-color: #000000;
+  padding-top: 20px;
+  min-height: 50px;
+  color: #3898EC;
+}
+main {
+  flex: 1;
+}
+.center-vertical {
+  display: flex;
+  justify-content: center;
+  height: 95vh;
+}
+
+.weather-form {
+  width: 25rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
