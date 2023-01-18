@@ -30,7 +30,11 @@ Prisma stores our users and with the following command, you can see all stored d
   Prisma Migrate automatically generates SQL database migrations, that are fully customizable, enabling
   you to make changes to the database without generating migration files.
 
+Server
 1. yarn docker:dev
 2. yarn prisma:generate
 3. yarn prisma:migrate
 4: yarn start:dev
+
+Client
+1. yarn run dev
