@@ -34,7 +34,7 @@ const SignInPage = () => {
 
   return (
     <Container maxWidth="sm" sx={{padding: 10}}>
-      <Card sx={{padding: 5}} elevation={4}>
+      <Card sx={{padding: 5}} elevation={4} style={{borderRadius: 20}}>
         <Typography variant="h3">
           Log in now
         </Typography>

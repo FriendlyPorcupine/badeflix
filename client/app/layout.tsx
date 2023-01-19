@@ -25,7 +25,7 @@ const RootLayout: FC<Props> = ({ children }) => {
         <Toaster />
         <Navbar />
         <main>
-          <Container maxWidth="md">
+          <Container maxWidth="lg">
             {children}
           </Container>
         </main>
