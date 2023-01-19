@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
-import styles from './page.module.css';
+import {Card, Container, Typography} from "@mui/material";
 
 const SignUpPage = () => {
   const emailRef = useRef<HTMLInputElement>();
@@ -31,31 +31,34 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.form} style={{ width: '75%' }}>
-        <h1>Register now</h1>
+    <Container maxWidth="sm" sx={{padding: 10}}>
+      <Card sx={{padding: 5}} elevation={4} style={{borderRadius: 20}}>
+        <Typography variant="h3">
+          Register now
+        </Typography>
         <TextField
           inputRef={emailRef}
-          className={styles.input}
           label="Enter e-mail"
-          variant="outlined"
+          variant="filled"
+          margin="normal"
           fullWidth
         />
         <TextField
           inputRef={passwordRef}
-          className={styles.input}
           label="Enter Password"
-          variant="outlined"
+          variant="filled"
+          margin="normal"
+          type="password"
           fullWidth
         />
-        <Alert severity="info">
+        <Alert severity="info" sx={{marginBottom: "15px", marginTop: "15px"}}>
           Already registered? <Link href="/signin">Log in</Link> now!
         </Alert>
         <Button variant="contained" onClick={register}>
           Register
         </Button>
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 

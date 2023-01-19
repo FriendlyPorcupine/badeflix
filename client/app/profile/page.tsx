@@ -7,7 +7,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { toast } from 'react-hot-toast';
-import styles from './page.module.css';
+import {Card, Container, Divider, Typography} from "@mui/material";
+
 
 const ProfilePage = () => {
   const [email, setEmail] = useState('');
@@ -64,35 +65,41 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.form} style={{ width: '75%' }}>
-        <h1>See your details</h1>
+    <Container maxWidth="md" sx={{padding: 10}}>
+      <Card sx={{padding: 5}} elevation={4} style={{borderRadius: 20}}>
+        <Typography variant="h3">Your profile </Typography>
+        <Divider><b>Update your info</b></Divider>
+        <Typography variant="subtitle2" sx={{paddingTop: 2}}>
+          To update your email or password, just type in the new one and click on "update user".
+        </Typography>
         <TextField
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={styles.input}
-          label="Your E-Mail"
+          label={email}
           variant="outlined"
+          margin="normal"
           fullWidth
         />
         <TextField
           inputRef={passwordRef}
-          className={styles.input}
           label="Your Password"
           variant="outlined"
+          margin="normal"
+          type="password"
           fullWidth
         />
-        <Alert severity="info">
-          No account yet? <Link href="/signup">Register</Link> now!
-        </Alert>
         <Button variant="contained" onClick={updateUser}>
           Update User
         </Button>
+        <Divider sx={{paddingBottom: 2}}><b>Delete your account</b></Divider>
+        <Typography variant="subtitle2" sx={{paddingTop: 2, paddingBottom: 2}}>
+          To delete your user, just click on the button below:
+        </Typography>
         <Button variant="contained" color="error" onClick={deleteUser}>
           Delete User
         </Button>
-      </div>
-    </div>
+      </Card>
+    </Container>
   );
 };
 

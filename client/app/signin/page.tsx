@@ -50,6 +50,7 @@ const SignInPage = () => {
           label="Enter Password"
           variant="filled"
           margin="normal"
+          type="password"
           fullWidth
         />
         <Alert severity="info" sx={{marginBottom: "15px", marginTop: "15px"}}>
