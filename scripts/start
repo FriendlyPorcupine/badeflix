@@ -1,9 +1,0 @@
-zuerst den backend port 3000
-yarn start dev
-
-dann frontend nimmt sich 3001
-yarn dev
-
-Für prisma Studio:
-in den /server ordner gehen dann
-yarn prisma:studio

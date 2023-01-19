@@ -47,3 +47,14 @@ OR
 Windows: setup.bat in terminal
 Mac: enter setup.sh in terminal
 
+Start everything 
+zuerst den server port 3000
+yarn start dev
+
+dann client nimmt sich 3001
+yarn dev
+
+Für prisma Studio:
+in den /server ordner gehen dann
+yarn prisma:studio
+
