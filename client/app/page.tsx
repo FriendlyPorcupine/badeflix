@@ -8,23 +8,35 @@ import { toast } from 'react-hot-toast';
 import {Container, Typography} from "@mui/material";
 import { useRouter } from "next/navigation";
 
+
 const IndexPage = () => {
     const addressRef = useRef<HTMLInputElement>();
     const router = useRouter();
 
-    // @todo post to backend!
-    const search = async () => {
+    // takes the address (user input) and saves it as a string,
+  // then takes the address string and uses OpenStreetMap to get the latitude & longitude
+    const addressToGeoCode = async (address: any) => {
+      const addressToStr = address.toString();
+      console.log({addressToStr});
+      const locationAsURI = encodeURI(addressToStr);
+      const url = `https://nominatim.openstreetmap.org/search?q=${locationAsURI}&format=json`;
+      const response = await fetch(url);
+      const responseJson = await response.json();
+      const firstResponse = responseJson[0]; // we take the first result
+      const lati = firstResponse.lat;
+      const long = firstResponse.lon;
 
-      const addressToSearch = {
-        address: addressRef.current?.value,
+      console.log({lati});
+      console.log({long});
+      return {
+        lat: firstResponse.lat,
+        lon: firstResponse.lon,
       };
-      console.log({addressToSearch})
-      try {
-        await axios.post('', addressToSearch);
-        router.push('/');
-      } catch (_) {
-        toast.error('There has been an error. Try again!')}
-    }
+    };
+
+
+
+
 
     return (
       <Container sx={{padding: 10}}>
@@ -39,7 +51,7 @@ const IndexPage = () => {
           inputRef={addressRef}
           fullWidth>
         </TextField>
-        <Button variant="contained" onClick={search}>
+        <Button variant="contained" onClick={() => addressToGeoCode(addressRef.current?.value)}>
           Search
         </Button>
       </Container>
@@ -50,3 +62,4 @@ const IndexPage = () => {
 
 
 export default IndexPage;
+
