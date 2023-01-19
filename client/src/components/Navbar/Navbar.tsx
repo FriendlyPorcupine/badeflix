@@ -36,7 +36,7 @@ const Navbar = () => {
           }}
           transformOrigin={{
             vertical: 'top',
-            horizontal: 'left',
+            horizontal: 'right',
           }}
         >
           <MenuItem onClick={handleClose}><Button><a href="/">Home</a></Button></MenuItem>

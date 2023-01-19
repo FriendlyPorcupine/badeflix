@@ -10,10 +10,9 @@ import { Toaster } from 'react-hot-toast';
 
 import './layout.css';
 import Navbar from "../src/components/Navbar/Navbar";
-import Footer from "../src/components/Footer/Footer";
 import {Container} from "@mui/material";
 import Image from "next/image";
-import logo from "../src/components/Navbar/logo.png";
+import logo from "../src/images/logo.png";
 
 
 
