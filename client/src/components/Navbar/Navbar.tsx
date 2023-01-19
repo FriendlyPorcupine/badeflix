@@ -1,33 +1,54 @@
 // uses style from layout.css
-import {Button, ButtonGroup} from "@mui/material";
-import Image from "next/image";
-import logo from "./logo.png";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
-const Header = () => {
+const Navbar = () => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <header>
-      {/*<img src={logo} alt="logo of badeflix"/>*/}
-      <Image
-        src={logo}
-        alt={"logo bla"}
-        width={966}
-        height={594}
-      />
       <nav>
-        <ButtonGroup variant="contained" aria-label="outlined button group">
-          {/* @todo show if signed a menu, if signed out, other menu */}
-          <Button><a href="/">Home</a></Button>
-          <Button><a href="/signup">Register</a></Button>
-          <Button><a href="/signin">Sign in</a></Button>
-          <Button><a href="/signout">Sign out</a></Button>
-          <Button><a href="/profile">Profile</a></Button>
-          <Button><a href="/favorites">Favorites</a></Button>
-        </ButtonGroup>
+        <Button
+          style={{color: "#D74967"}}
+          size="large"
+          aria-controls={open ? 'demo-positioned-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+        >
+          <b>Menu</b>
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+        >
+          <MenuItem onClick={handleClose}><Button><a href="/">Home</a></Button></MenuItem>
+          <MenuItem onClick={handleClose}><Button><a href="/signup">Register</a></Button></MenuItem>
+          <MenuItem onClick={handleClose}><Button><a href="/signin">Sign in</a></Button></MenuItem>
+          <MenuItem onClick={handleClose}><Button><a href="/signout">Sign out</a></Button></MenuItem>
+          <MenuItem onClick={handleClose}><Button><a href="/profile">Profile</a></Button></MenuItem>
+
+        </Menu>
       </nav>
-    </header>
   );
 };
-export default Header;
+export default Navbar;
 
 

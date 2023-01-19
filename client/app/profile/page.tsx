@@ -58,9 +58,7 @@ const ProfilePage = () => {
     }
   };
 
-  useEffect(() => {
-    getUserInformation();
-  }, []);
+
 
   return (
     <Container maxWidth="md" sx={{padding: 10}}>

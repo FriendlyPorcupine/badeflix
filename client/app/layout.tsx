@@ -12,6 +12,10 @@ import './layout.css';
 import Navbar from "../src/components/Navbar/Navbar";
 import Footer from "../src/components/Footer/Footer";
 import {Container} from "@mui/material";
+import Image from "next/image";
+import logo from "../src/components/Navbar/logo.png";
+
+
 
 interface Props {
   children: ReactNode;
@@ -22,14 +26,22 @@ const RootLayout: FC<Props> = ({ children }) => {
     <html lang="de">
       <head />
       <body>
+      <header>
+        <Image
+          src={logo}
+          alt={"logo of Badeflix"}
+          width={200}
+          height={100}
+          style={{marginTop: 2}}
+        />
+        <Navbar/>
+      </header>
         <Toaster />
-        <Navbar />
         <main>
           <Container maxWidth="lg">
             {children}
           </Container>
         </main>
-        <Footer/>
       </body>
     </html>
   );
