@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rimraf dist&&nest build",
     "start": "node dist/main",
+    "lint": "eslint . --fix",
     "start:dev": "rimraf dist&&nest start --watch",
     "docker:dev": "docker compose -f docker-compose.yml --env-file .env -p badeflix-dev up -d",
     "prisma:generate": "prisma generate --schema=./src/config/schema.prisma",
@@ -12,6 +13,7 @@
     "prisma:studio": "prisma studio --schema=./src/config/schema.prisma"
   },
   "dependencies": {
+    "@googlemaps/google-maps-services-js": "^3.3.26",
     "@nestjs/common": "^9.0.11",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.11",

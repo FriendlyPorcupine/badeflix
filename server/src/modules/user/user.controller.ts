@@ -65,8 +65,6 @@ export class UserController {
 
   @ApiTags('user')
   @Get('/signout')
-
-  //Hier wird die session gelöscht!
   signout(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     req.session.destroy(null);
     res.clearCookie('connect.sid');
