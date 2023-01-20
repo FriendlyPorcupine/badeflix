@@ -7,15 +7,16 @@ import {
 import { Injectable } from '@nestjs/common';
 import { ApiConfigService } from '../_setup/config/api-config.service';
 import { RouteDto } from './dto/route-dto';
-
+// Sozusagen der/die ArbeiterIn
 @Injectable()
 export class DirectionService {
   constructor(private readonly config: ApiConfigService) {}
-
+  /Nimm 
   async getRoutes(
     startAddress: string,
     destinationAddress: string,
   ): Promise<RouteDto> {
+    // Client ist der intgrierte google client
     const client = new Client({});
     const { data } = await client.directions({
       params: {
