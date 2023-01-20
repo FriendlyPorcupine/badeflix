@@ -9,6 +9,7 @@ import {Container, Typography} from "@mui/material";
 import { useRouter } from "next/navigation";
 
 
+
 const IndexPage = () => {
     const addressRef = useRef<HTMLInputElement>();
     const router = useRouter();
@@ -40,11 +41,13 @@ const IndexPage = () => {
       const dummyDestLat1 = "40.630099";
       const dummyDestLong1 = "73.993521";
 
-      const API1 = "6f1009739cmsh27747aa4a2e5d42p16af98jsn3372d28d889e";
+      const key ="CHANGE KEY HERE (signal)";
+
+
 
       //const dummyURL = "https://trueway-matrix.p.rapidapi.com/CalculateDrivingMatrix?origins=40.629041%2C-74.025606&destinations=40.630099%2C-73.993521%3B40.644895%2C-74.013818%3B40.627177%2C-73.980853&rapidapi-key=6f1009739cmsh27747aa4a2e5d42p16af98jsn3372d28d889e"
       //get distance from address to bathing place
-      const url1 =`https://trueway-matrix.p.rapidapi.com/CalculateDrivingMatrix?origins=${lati}%2C${long}&destinations=${dummyLat1}%2C${dummyLong1}%3B${dummyLat2}%2C${dummyLong3}%3B${dummyLat3}%2C${dummyLong2}&rapidapi-key=${API1}`;
+      const url1 =`https://trueway-matrix.p.rapidapi.com/CalculateDrivingMatrix?origins=${lati}%2C${long}&destinations=${dummyLat1}%2C${dummyLong1}%3B${dummyLat2}%2C${dummyLong3}%3B${dummyLat3}%2C${dummyLong2}&rapidapi-key=${key}`;
       //const url2 =`https://trueway-matrix.p.rapidapi.com/CalculateDrivingMatrix?origins=${dummyOrgLat}%2C-${dummyOrgLong}&destinations=${dummyDestLat1}%2C-${dummyDestLong1}%3B${dummyDestLat1}%2C-${dummyDestLong1}&rapidapi-key=${API1}`;
       const responseOfRoute = await fetch(url1);
       const responseOfRouteJson = await responseOfRoute.json();
