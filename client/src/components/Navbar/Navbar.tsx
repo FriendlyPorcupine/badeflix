@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
+
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -14,6 +15,7 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+
   return (
       <nav>
         <Button
@@ -22,6 +24,8 @@ const Navbar = () => {
           aria-controls={open ? 'demo-positioned-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
+          onMouseEnter={handleClick}
+          onMouseLeave={handleClick}
           onClick={handleClick}
         >
           <b>Menu</b>
