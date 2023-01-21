@@ -1,34 +1,10 @@
 Dear User,
 
 please ensure to run Yarn and Nestjs (Node) on your machine
-  --> yarn start:dev will start the server
-  Yarn is a package manager that doubles down as project manager. Whether you work on one-shot
-  projects or large monorepos, as a hobbyist or an enterprise user, we've got you covered.
 
-  Yarn is a package manager that doubles down as project manager. Whether you work on one-shot
-  projects or large monorepos, as a hobbyist or an enterprise user, we've got you covered.
+Installing yarn: 
 
-  Nest (NestJS) is a framework for building efficient, scalable Node.js server-side applications.
-  It uses progressive JavaScript, is built with and fully supports TypeScript (yet still enables
-  developers to code in pure JavaScript) and combines elements of OOP (Object Oriented Programming),
-  FP (Functional Programming), and FRP (Functional Reactive Programming).
-  Under the hood, Nest makes use of robust HTTP Server frameworks like Express (the default) and
-  optionally can be configured to use Fastify as well!
-
-Docker will handle our databank
-  --> yarn docker:dev
-  Docker allocates a read-write filesystem to the container, as its final layer. This allows a
-  running container to create or modify files and directories in its local filesystem. Docker creates
-  a network interface to connect the container to the default network, since you did not specify any
-  networking options.
-
-Prisma stores our users and with the following command, you can see all stored data
-  --> yarn prisma:studio
-  Prisma Client is a query builder that composes queries the way you think and is  auto-generated
-  from the Prisma schema with types tailored to your app.
-
-  Prisma Migrate automatically generates SQL database migrations, that are fully customizable, enabling
-  you to make changes to the database without generating migration files.
+Copy content from example.env to a new file with ".env"
 
 First time install:
 Got to Server directory in terminal
@@ -43,9 +19,9 @@ To see database:
 Got to Client directory in terminal
 1. yarn run dev
 
-OR
+//OR
 Windows: setup.bat in terminal
-Mac: enter setup.sh in terminal
+Mac: enter setup.sh in terminal//
 
 Start everything 
 zuerst den server port 3000
@@ -58,3 +34,34 @@ Für prisma Studio:
 in den /server ordner gehen dann
 yarn prisma:studio
 
+Prisma stores our users and with the following command, you can see all stored data
+--> yarn prisma:studio
+Prisma Client is a query builder that composes queries the way you think and is  auto-generated
+from the Prisma schema with types tailored to your app.
+
+Prisma Migrate automatically generates SQL database migrations, that are fully customizable, enabling
+you to make changes to the database without generating migration files.
+
+**1.2.1. Muss-Kriterien**
+● Standort muss eingegeben werden
+● Bäder müssen nach Entfernungen sortiert werden
+● Auslastung per Bäderampel muss angezeigt werden
+● Aktuelles Wetter vor Ort muss angezeigt werden
+● Routenplaner für öffentliche Verkehrsmittel muss angezeigt werden
+● Login Bereich: User muss ein Profil anlegen können
+● Login Bereich: User muss sein Profil löschen können
+
+**1.2.2. Soll-Kriterien**
+● Login Bereich: User soll drei Badeplätze als Favoriten speichern können
+● Suche erweitern: Auswahl zwischen Kategorie Freibad oder Naturschwimmplatz (API
+Schwimmbäder)
+● Die Web-Applikation soll ein responsive Layout haben
+
+**1.2.3. Kann-Kriterien**
+● Login Bereich: User kann bisherige Suchen speichern
+● Routenplaner: Zweiter User kann bei der Suche nach dem nächsten Bad
+berücksichtigt werden (Meet me halfway)
+
+**1.2.4. Abgrenzungskriterien**
+● Die Web-Applikation soll nur für Wien funktionieren, nicht österreichweit
+● Routenplanung nicht für Auto oder Rad verfügbar
