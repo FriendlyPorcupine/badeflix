@@ -69,3 +69,6 @@ berücksichtigt werden (Meet me halfway)
 **1.2.4. Abgrenzungskriterien**
 ● Die Web-Applikation soll nur für Wien funktionieren, nicht österreichweit
 ● Routenplanung nicht für Auto oder Rad verfügbar
+
+yarn add react-table
+yarn add styled-components

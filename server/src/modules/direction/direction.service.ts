@@ -11,7 +11,7 @@ import { RouteDto } from './dto/route-dto';
 @Injectable()
 export class DirectionService {
   constructor(private readonly config: ApiConfigService) {}
-  /Nimm 
+  //Nimm
   async getRoutes(
     startAddress: string,
     destinationAddress: string,
