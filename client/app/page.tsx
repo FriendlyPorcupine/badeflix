@@ -20,21 +20,25 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-  price: number,
+  bad: string,
+  wetter: number,
+  ampel: boolean,
+  distance: number,
+  time: number,
+
 ) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
+    Bad: bad,
+    Wetter: wetter,
+    Ampel: ampel,
+    /*[
+    {
+      available: boolean
+    }
+  ],*/
+    Distanz: distance,
+    Wegzeit: time,
+    Route: [
       {
         date: '2020-01-05',
         customerId: '11091700',
@@ -66,12 +70,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.Bad}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">{row.Wetter}</TableCell>
+        <TableCell align="right">{row.Ampel}</TableCell>
+        {/*== false ? <TrafficLightRed /> : TrafficLightGreen <TrafficLightRed} </TableCell>*/}
+        <TableCell align="right">{row.Distanz}</TableCell>
+        <TableCell align="right">{row.Wegzeit}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -90,16 +95,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
+                  {row.Route.map((historyRow) => (
                     <TableRow key={historyRow.date}>
                       <TableCell component="th" scope="row">
                         {historyRow.date}
                       </TableCell>
                       <TableCell>{historyRow.customerId}</TableCell>
                       <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -112,13 +114,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
   );
 };
 
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 3.99),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
-    createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
-    createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-    createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
-  ];
+
+const rows = [
+  //createData('Frozen yoghurt', 159, res.api bla bla von todolist, 24, 4.0, 3.99),
+  createData('Bad1', 15.9, false, 2.4, 16.0),
+  createData('Bad1', 23.7, true, 3.7, 18.3),
+  createData('Bad1', 26.2, false, 2.4, 17.0)
+];
 
 
 const IndexPage = () => {
@@ -200,20 +202,21 @@ const IndexPage = () => {
         <TableHead>
           <TableRow>
             <TableCell/>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Freibad</TableCell>
+            <TableCell align="right">Temperatur</TableCell>
+            <TableCell align="right">Ampel</TableCell>
+            <TableCell align="right">Distanz</TableCell>
+            <TableCell align="right">Wegzeit</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => <Row key={row.name} row={row}/>)}
+          {rows.map((row) => <Row key={row.Bad} row={row}/>)}
         </TableBody>
       </Table>
     </TableContainer></>
-)
+  )
 };
 
 export default IndexPage;
+
 
