@@ -10,7 +10,7 @@ export class DirectionController {
 
   // DierctionService ist natürlich nur authentifizierten usern erlaubt
   @UseGuards(AuthenticatedGuard)
-  
+
   // Wenn Auth dann get directions
   @Get('/direction')
   getDirections(

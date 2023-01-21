@@ -16,7 +16,7 @@ async function bootstrap() {
   await initializeApp(app, config);
   await app.listen(config.get('API_PORT')); //Steht in env.
 }
-
+// http://localhost:3000/v1/bath/baths
 const initializeApp = async (app: App, config: ApiConfigService) => {
   app.enableCors({
     origin: 'http://localhost:3001',

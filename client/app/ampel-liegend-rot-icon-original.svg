@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   height="200"
+   width="600"
+   version="1.1">
+  <defs>
+  </defs>
+  <g stroke="none">
+  <circle r="100" cx="100" cy="100" fill="#888" />
+  <circle r="100" cx="300" cy="100" fill="#888"/>
+  <circle r="100" cx="500" cy="100" fill="#d40000"  />
+  </g>
+</svg>
