@@ -15,13 +15,13 @@ Got to Server directory in terminal
 1. yarn docker:dev
 2. yarn prisma:generate
 3. yarn prisma:migrate
-4: yarn start:dev
+4: yarn dev
 
 To see database:
 5. yarn prisma:studio in server directory
 
 Got to Client directory in terminal
-1. yarn run dev
+1. yarn dev
 
 //OR
 Windows: setup.bat in terminal
@@ -29,7 +29,7 @@ Mac: enter setup.sh in terminal//
 
 Start everything 
 zuerst den server port 3000
-yarn start dev
+yarn dev
 
 dann client nimmt sich 3001
 yarn dev
