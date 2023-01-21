@@ -6,11 +6,13 @@ import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import {Card, Container, Divider, Typography} from "@mui/material";
+import { useRouter } from 'next/navigation';
 
 
 const ProfilePage = () => {
   const [email, setEmail] = useState('');
   const passwordRef = useRef<HTMLInputElement>();
+  const router = useRouter();
 
   const getUserInformation = async () => {
     try {
@@ -19,7 +21,7 @@ const ProfilePage = () => {
       });
       setEmail(fetchedUser.data.email);
     } catch (_) {
-      toast.error('Not logged in!');
+       router.push('/signin');
     }
   };
 
@@ -58,7 +60,9 @@ const ProfilePage = () => {
     }
   };
 
-
+  useEffect(() => {
+    getUserInformation();
+  }, []);
 
   return (
     <Container maxWidth="md" sx={{padding: 10}}>

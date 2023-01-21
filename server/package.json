@@ -6,7 +6,7 @@
     "build": "rimraf dist&&nest build",
     "start": "node dist/main",
     "lint": "eslint . --fix",
-    "start:dev": "rimraf dist&&nest start --watch",
+    "dev": "rimraf dist&&nest start --watch",
     "docker:dev": "docker compose -f docker-compose.yml --env-file .env -p badeflix-dev up -d",
     "prisma:generate": "prisma generate --schema=./src/config/schema.prisma",
     "prisma:migrate": "prisma migrate dev --schema=./src/config/schema.prisma",
