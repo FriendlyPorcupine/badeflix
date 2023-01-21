@@ -31,26 +31,27 @@ function createData(
     Bad: bad,
     Wetter: wetter,
     Ampel: ampel,
-    /*[
-    {
-      available: boolean
-    }
-  ],*/
     Distanz: distance,
     Wegzeit: time,
-    Route: [
-      {
-        date: '2020-01-05',
-        customerId: '11091700',
-        amount: 3,
-      },
-      {
-        date: '2020-01-02',
-        customerId: 'Anonymous',
-        amount: 1,
-      },
-    ],
-  };
+    Route:
+      [
+        {
+          instruction: 'Gehen bis Gustav Pick Gasse',
+          distance: '63 m',
+          duration: '1 Minute'
+        },
+        {
+          instruction: 'Bus in Richtung Salmannsdorf',
+          distance: '2,8 km',
+          duration: '8 Minuten'
+        },
+        {
+          instruction: 'Gehen bis Salmannsdorfer Str., 1190 Wien, Österreich',
+          distance: '0,4 km',
+          duration: '6 Minuten'
+        },
+      ],
+  }
 }
 
 function Row(props: { row: ReturnType<typeof createData> }) {
@@ -69,12 +70,11 @@ function Row(props: { row: ReturnType<typeof createData> }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {row.Bad}
-        </TableCell>
+        <TableCell component="th" scope="row"> {row.Bad}</TableCell>
         <TableCell align="right">{row.Wetter}</TableCell>
         <TableCell align="right">{row.Ampel}</TableCell>
-        {/*== false ? <TrafficLightRed /> : TrafficLightGreen <TrafficLightRed} </TableCell>*/}
+        {/* TODO: hat der Tobi angesagt:*/
+          /*== false ? <TrafficLightRed /> : TrafficLightGreen <TrafficLightRed} </TableCell>*/}
         <TableCell align="right">{row.Distanz}</TableCell>
         <TableCell align="right">{row.Wegzeit}</TableCell>
       </TableRow>
@@ -83,25 +83,24 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Routenbeschreibung
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell>Activität</TableCell>
+                    <TableCell>Distanz</TableCell>
+                    <TableCell align="right">Dauer</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.Route.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
+                    <TableRow key={historyRow.instruction}>
                       <TableCell component="th" scope="row">
-                        {historyRow.date}
+                        {historyRow.instruction}
                       </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
+                      <TableCell>{historyRow.distance}</TableCell>
+                      <TableCell align="right">{historyRow.duration}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -112,14 +111,13 @@ function Row(props: { row: ReturnType<typeof createData> }) {
       </TableRow>
     </React.Fragment>
   );
-};
-
+}
 
 const rows = [
   //createData('Frozen yoghurt', 159, res.api bla bla von todolist, 24, 4.0, 3.99),
   createData('Bad1', 15.9, false, 2.4, 16.0),
-  createData('Bad1', 23.7, true, 3.7, 18.3),
-  createData('Bad1', 26.2, false, 2.4, 17.0)
+  createData('Bad2', 23.7, true, 3.7, 18.3),
+  createData('Bad3', 26.2, false, 2.4, 17.0),
 ];
 
 
