@@ -2,11 +2,11 @@ Dear User,
 
 please ensure to run Yarn and Nestjs (Node) on your machine:
 
-MISSING
 Installing Nestjs:
+1. install nest.js
 
-MISSING
 Installing yarn: 
+1. yarn install
 
 Copy content from example.env to a new file with ".env"
 
@@ -45,6 +45,10 @@ from the Prisma schema with types tailored to your app.
 
 Prisma Migrate automatically generates SQL database migrations, that are fully customizable, enabling
 you to make changes to the database without generating migration files.
+
+Run the following to update:                           │
+│    yarn add --dev prisma@latest                         │
+│    yarn add @prisma/client@latest
 
 **1.2.1. Muss-Kriterien**
 ● Standort muss eingegeben werden
