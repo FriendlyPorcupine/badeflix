@@ -16,13 +16,13 @@ export class DirectionController {
   @Get('/direction')
   getDirections(
     @Query('start_street') startStreet: string,
-    //@Query('start_zip') startZip: number,
+    @Query('start_zip') startZip: number,
     @Query('destination_address') destinationAddress: string,
   ) {
     //only Vienna's ZIP Codes allowed
-    //if (startZip >= 1240 || startZip <= 1010) {
-    //  throw new HttpException("invalid zip code", 400);
-    //}
+    if (startZip >= 1240 || startZip <= 1010) {
+      throw new HttpException("invalid zip code", 400);
+    }
 
     // Und getRoutes
     return this.directionService.getRoutes(`${startStreet}`, destinationAddress);
