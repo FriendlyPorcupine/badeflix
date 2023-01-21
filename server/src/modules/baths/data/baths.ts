@@ -19,7 +19,7 @@ export const baths = [
     name: 'grossfeldsiedlung',
     category: 'misc',
   },
-  {
+  /*{
     name: 'amalienbad',
     category: 'hall',
   },
@@ -38,7 +38,7 @@ export const baths = [
   {
     name: 'floridsdorf',
     category: 'hall',
-  },
+  }*/,
   {
     name: 'laaerbergbad',
     category: 'summer',
@@ -79,7 +79,7 @@ export const baths = [
     name: 'liesingerbad',
     category: 'summer',
   },
-  {
+  /*{
     name: 'apostelbad',
     category: 'sauna',
   },
@@ -94,5 +94,5 @@ export const baths = [
   {
     name: 'penzingerbad',
     category: 'sauna',
-  },
+  },*/
 ];
