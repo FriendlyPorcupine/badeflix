@@ -1,9 +1,9 @@
 'use client';
-
+import BathingPlaces from "./components/fetchbath";
 import styles from '../styles/todolist.module.css';
 import {Results} from "./results_model";
-import {Button, Container} from "@mui/material";
-import {useRef} from "react";
+import {Button, Container, Typography} from "@mui/material";
+import {useEffect, useRef} from "react";
 import {useRouter} from "next/navigation";
 
 const ResultsListHere = () => {
@@ -13,13 +13,11 @@ const ResultsListHere = () => {
   const dummystart ="schonbrunnerstrasse";
   const dummyzip = "1050";
   const dummydest = "Karlsplatz";
-  const fetchResults = async () => {
+  const fetchResults = async (start: string, zip: string, destination: string) => {
     //start: string, zip: string, destination: string
-    const start = dummystart;
-    const zip = dummyzip;
-    const destination = dummydest;
 
-    const url = `http://localhost:3000/v1/direction/direction?start_street=${dummystart}&start_zip=${dummyzip}&destination_address=${dummydest}`;
+
+    const url = `http://localhost:3000/v1/direction/direction?start_street=${start}&start_zip=${zip}&destination_address=${destination}`;
     const res = await fetch(url);
 
     if (!res.ok) {
@@ -27,14 +25,34 @@ const ResultsListHere = () => {
     }
 
     const results = await res.json();
+    const distanceResult = results.distance;
+
+    console.log(distanceResult)
     console.log(results);
 
+
+    const placeAndDistanceArray:string[][] = [];
+    placeAndDistanceArray.push([results.duration],[results.distance]);
+    console.log(placeAndDistanceArray);
+
+    return placeAndDistanceArray;
   };
 
 
+/**
+  const addDataToArray = () => {
+  const placeAndDistanceArray:string[][];
+  placeAndDistanceArray.forEach()
+  }
+*/
+
+
+    const data = fetchResults(dummystart, dummyzip, dummydest);
+    console.log(data);
+
   return (
   <Container>
-    <Button onClick={fetchResults}> try here </Button>
+    <BathingPlaces/>
   </Container>
 );
   /**
