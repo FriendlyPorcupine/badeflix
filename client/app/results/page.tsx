@@ -29,29 +29,56 @@ const ResultsListHere = () => {
 
 
     const placeAndDistanceArray:string[][] = [];
-    placeAndDistanceArray.push([results.duration],[results.distance]);
+
+    placeAndDistanceArray.push([results[0].duration],[results[0].distance]); //destination //distance
+
     console.log(placeAndDistanceArray);
 
-    return placeAndDistanceArray;
+    return results[0].distance;
+  };
+
+  const fetchSummerBaths = async () => {
+    const url = `http://localhost:3000/v1/bath/baths?category=summer`;
+    //needs to be from API
+    const bathplaces = await fetch(url);
+    if (!bathplaces.ok) {
+      throw new Error('Failed to fetch results');
+    }
+    const results = await bathplaces.json();
+    const resultsname= results[3].name;
+
+    console.log(results);
+    console.log('______');
+    console.log(resultsname);
+
+    return results;
   };
 
 
-/**
-  const addDataToArray = () => {
-  const placeAndDistanceArray:string[][];
-  placeAndDistanceArray.forEach()
+  const allDestinations = async (start:string, zip:string, destination:string) => {
+    const bath = await fetchSummerBaths(); //array of names
+    const duration = await fetchResults(start, zip, destination); //gets distance from start to destination
+    //destination address from where? hard coded???
+
+    //makes a list with bath name and it's duration from fetchSummerBath
+    const makeList = []; //new array
+    for(let i = 0; i < bath.length; i++) {
+      makeList.push([bath[i],duration[i]]);
+    }
+    console.log("hereeeeeee");
+    console.log(makeList);
+
+    return makeList;
   }
-*/
-
-
-    const data = fetchResults(dummystart, dummyzip, dummydest);
-    console.log(data);
 
   return (
-  <Container>
-    <button onClick={() =>fetchResults("schönbrunnerstraße", "1050", "karlsplatz")}>click to try</button>
-  </Container>
-);
+  <div>
+    <button onClick={() =>allDestinations("schönbrunnerstraße", "1050", "karlsplatz")}>
+      click
+    </button>
+
+  </div>
+  );
 
 };
 
