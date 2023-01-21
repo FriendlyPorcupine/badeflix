@@ -28,11 +28,11 @@ const ResultsListHere = () => {
     console.log(results);
 
 
-    const placeAndDistanceArray:string[][] = [];
+  //  const placeAndDistanceArray:string[][] = [];
 
-    placeAndDistanceArray.push([results[0].duration],[results[0].distance]); //destination //distance
+   // placeAndDistanceArray.push([results[0].duration],[results[0].distance]); //destination //distance
 
-    console.log(placeAndDistanceArray);
+  //  console.log(placeAndDistanceArray);
 
     return results[0].distance;
   };
