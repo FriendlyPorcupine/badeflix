@@ -1,7 +1,11 @@
 Dear User,
 
-please ensure to run Yarn and Nestjs (Node) on your machine
+please ensure to run Yarn and Nestjs (Node) on your machine:
 
+MISSING
+Installing Nestjs:
+
+MISSING
 Installing yarn: 
 
 Copy content from example.env to a new file with ".env"
