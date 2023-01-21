@@ -10,8 +10,8 @@ export class DirectionController {
   constructor(private readonly directionService: DirectionService) {}
 
   // DierctionService ist natürlich nur authentifizierten usern erlaubt
-  @UseGuards(AuthenticatedGuard)
-  
+  //@UseGuards(AuthenticatedGuard)
+
   // Wenn Auth dann get directions
   @Get('/direction')
   getDirections(
