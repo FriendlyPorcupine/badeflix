@@ -4,6 +4,7 @@ import styles from '../styles/todolist.module.css';
 import { TodoItem } from './TodoItem';
 
 const fetchTodos = async () => {
+  // Forschleife für alle Bäder machen, hole directions, sortieren und an Tablle schicken
   const res = await fetch('https://jsonplaceholder.typicode.com/todos');
 
   if (!res.ok) {
