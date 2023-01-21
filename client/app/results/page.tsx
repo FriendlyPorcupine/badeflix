@@ -1,10 +1,7 @@
 'use client';
 import BathingPlaces from "./components/fetchbath";
-import styles from '../styles/todolist.module.css';
-import {Results} from "./results_model";
 import {Button, Container, Typography} from "@mui/material";
-import {useEffect, useRef} from "react";
-import {useRouter} from "next/navigation";
+
 
 const ResultsListHere = () => {
   //const emailRef = useRef<HTMLInputElement>();
@@ -52,18 +49,10 @@ const ResultsListHere = () => {
 
   return (
   <Container>
-    <BathingPlaces/>
+    <button onClick={() =>fetchResults("schönbrunnerstraße", "1050", "karlsplatz")}>click to try</button>
   </Container>
 );
-  /**
-   export const ResultsList = async () => {
-  const resultsfetched = await fetchResults("schönbrunnerstraße", "1050","karlsplatz");
-  console.log(resultsfetched)
-  return (
-    <>Something</>
-  );
-};
-   */
+
 };
 
 export default ResultsListHere;
