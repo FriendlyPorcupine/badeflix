@@ -78,11 +78,13 @@ const Navbar = () => {
             </Button>
           </MenuItem>
         )}
+        {isAuthenticated && (
         <MenuItem onClick={handleClose}>
           <Button>
             <a href="/profile">Profile</a>
           </Button>
         </MenuItem>
+        )}
       </Menu>
     </nav>
   );
