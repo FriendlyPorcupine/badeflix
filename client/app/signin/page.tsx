@@ -4,11 +4,16 @@ import { Card, Container, Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { margin } from '@mui/system';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
+<<<<<<< HEAD
+=======
+import styles from './page.module.css';
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
 
 const SignInPage = () => {
   const emailRef = useRef<HTMLInputElement>();

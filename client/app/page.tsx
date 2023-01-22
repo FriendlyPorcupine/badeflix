@@ -16,7 +16,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+<<<<<<< HEAD
 import { FC, useRef, useState } from 'react';
+=======
+import { FC, useEffect, useRef, useState } from 'react';
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
 import {
   TrafficLightGreen,
   TrafficLightRed,
@@ -99,6 +103,7 @@ const IndexPage = () => {
   const [rows, setRows] = useState<BathData[]>([]);
 
   const initializeTable = async () => {
+<<<<<<< HEAD
     const data = await Promise.all([
       fetchBathData(
         streetRef.current?.value ?? '',
@@ -109,6 +114,24 @@ const IndexPage = () => {
     setWeather(data[1]);
     setRows(data[0]);
   };
+=======
+    console.log(streetRef.current?.value);
+    const tableData = await fetchBathData(
+      streetRef.current?.value ?? '',
+      zipRef.current?.value ?? '',
+    );
+    setRows(tableData);
+  };
+
+  const initializeWeather = async () => {
+    const weatherData = await fetchWeatherData('Wien');
+    setWeather(weatherData);
+  };
+
+  useEffect(() => {
+    initializeWeather();
+  }, []);
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
 
   return (
     <>

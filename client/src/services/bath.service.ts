@@ -89,9 +89,13 @@ export const fetchBathData = async (
     return [];
   }
 
+<<<<<<< HEAD
   const allBathRes = await fetch('http://localhost:3000/v1/bath/baths', {
     credentials: 'include',
   });
+=======
+  const allBathRes = await fetch('http://localhost:3000/v1/bath/baths');
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
 
   if (!allBathRes.ok) {
     throw new Error('Failed to fetch all baths');
@@ -107,9 +111,12 @@ export const fetchBathData = async (
       fetch(
         'http://localhost:3000/v1/bath/traffic?' +
           new URLSearchParams({ bath }),
+<<<<<<< HEAD
         {
           credentials: 'include',
         },
+=======
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
       ),
     ),
   );
@@ -127,9 +134,12 @@ export const fetchBathData = async (
             start_zip: zip,
             destination_address: `${traffic.name}, ${traffic.address}`,
           }),
+<<<<<<< HEAD
         {
           credentials: 'include',
         },
+=======
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
       ),
     ),
   );
@@ -137,9 +147,15 @@ export const fetchBathData = async (
   const routes: Route[] = await Promise.all(
     routingData.map((data) => data.json()),
   );
+<<<<<<< HEAD
 
   const fullBathData = routes
     .filter((route: any) => route.statusCode !== 400)
+=======
+  console.log(routes);
+
+  const fullBathData = routes
+>>>>>>> 4e1922e47a5bf0e7a7483f4243d9d7df1759a66d
     .map((route, i) => ({
       ...bathTraffic[i],
       ...route,

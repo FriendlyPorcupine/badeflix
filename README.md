@@ -2,13 +2,16 @@ Dear User,
 
 please ensure to run Yarn and Nestjs (Node) on your machine:
 
-Installing Nestjs:
+Installing Nestjs on terminal:
 1. install nest.js
 
-Installing yarn: 
+Installing yarn on terminal:
 1. yarn install
 
-Copy content from example.env to a new file with ".env"
+Copy content from ./server/example.env to a new file with ".env" within the same folder
+Remember to add your Google API Key, otherwise it won't work to get routing information.
+
+Start Docker Desktop application. Once running, proceed. If Docker is not active, server won't connect
 
 First time install:
 Got to Server directory in terminal
@@ -21,18 +24,19 @@ To see database:
 5. yarn prisma:studio in server directory
 
 Got to Client directory in terminal
-1. yarn dev
+1. yarn install
+2. yarn dev
+3. click on provided localhost address to see website
 
 //OR
 Windows: setup.bat in terminal
 Mac: enter setup.sh in terminal//
 
-Start everything 
-zuerst den server port 3000
-yarn dev
+Start everything on server in terminal to get server port 3000
+1. yarn dev
 
-dann client nimmt sich 3001
-yarn dev
+Now client on terminal, will be port 3001
+1. yarn dev
 
 Für prisma Studio:
 in den /server ordner gehen dann
