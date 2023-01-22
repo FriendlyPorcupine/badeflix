@@ -5,16 +5,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import { Container } from '@mui/material';
+import Image from 'next/image';
 import { ReactNode, FC } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import './layout.css';
-import Navbar from "../src/components/Navbar/Navbar";
-import {Container} from "@mui/material";
-import Image from "next/image";
-import logo from "../src/images/logo.png";
-
-
+import Navbar from '../src/components/Navbar/Navbar';
+import logo from '../src/images/logo.png';
 
 interface Props {
   children: ReactNode;
@@ -25,21 +23,19 @@ const RootLayout: FC<Props> = ({ children }) => {
     <html lang="de">
       <head />
       <body>
-      <header>
-        <Image
-          src={logo}
-          alt={"logo of Badeflix"}
-          width={200}
-          height={100}
-          style={{marginTop: 2}}
-        />
-        <Navbar/>
-      </header>
+        <header>
+          <Image
+            src={logo}
+            alt={'logo of Badeflix'}
+            width={200}
+            height={100}
+            style={{ marginTop: 2 }}
+          />
+          <Navbar />
+        </header>
         <Toaster />
         <main>
-          <Container maxWidth="lg">
-            {children}
-          </Container>
+          <Container maxWidth="lg">{children}</Container>
         </main>
       </body>
     </html>

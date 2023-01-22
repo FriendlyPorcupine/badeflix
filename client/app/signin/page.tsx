@@ -1,5 +1,6 @@
 'use client';
 
+import { Card, Container, Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,9 +9,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
-import styles from './page.module.css';
-import {Card, Container, Typography} from "@mui/material";
-import {margin} from "@mui/system";
 
 const SignInPage = () => {
   const emailRef = useRef<HTMLInputElement>();
@@ -26,6 +24,7 @@ const SignInPage = () => {
       await axios.post('http://localhost:3000/v1/user/signin', credentials, {
         withCredentials: true,
       });
+      localStorage.setItem('authenticated', '1');
       router.push('/');
     } catch (_) {
       toast.error('Invalid credentials!');
@@ -33,11 +32,9 @@ const SignInPage = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{padding: 10}}>
-      <Card sx={{padding: 5}} elevation={4} style={{borderRadius: 20}}>
-        <Typography variant="h3">
-          Log in now
-        </Typography>
+    <Container maxWidth="sm" sx={{ padding: 10 }}>
+      <Card sx={{ padding: 5 }} elevation={4} style={{ borderRadius: 20 }}>
+        <Typography variant="h3">Log in now</Typography>
         <TextField
           inputRef={emailRef}
           label="Enter e-mail"
@@ -53,7 +50,7 @@ const SignInPage = () => {
           type="password"
           fullWidth
         />
-        <Alert severity="info" sx={{marginBottom: "15px", marginTop: "15px"}}>
+        <Alert severity="info" sx={{ marginBottom: '15px', marginTop: '15px' }}>
           No account yet? <Link href="/signup">Register</Link> now!
         </Alert>
         <Button variant="contained" onClick={signin}>
