@@ -1,12 +1,12 @@
 'use client';
 
+import { Button, Container } from '@mui/material';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { string } from 'prop-types';
+import { useRef } from 'react';
 import styles from '../styles/todolist.module.css';
-import {Results} from "./results_model";
-import {Button, Container} from "@mui/material";
-import {useRef} from "react";
-import {useRouter} from "next/navigation";
-import axios from "axios";
-import {string} from "prop-types";
+import { Results } from './results_model';
 
 // http://localhost:3000/v1/weather/geolocation?city=vienna
 
@@ -19,19 +19,17 @@ const w_Res = await axios.put(
   };*/
 
 const fetchResults = async () => {
+  const city = 'vienna';
+  const url = `/v1/weather/geolocation?city=${city}`;
+  const weatherRes = await fetch(url);
 
-const city = 'vienna';
-const url = `/v1/weather/geolocation?city=${city}`;
-const weatherRes = await fetch(url);
+  if (!weatherRes.ok) {
+    throw new Error('Failed to fetch results');
+  }
 
-if (!weatherRes.ok) {
-  throw new Error('Failed to fetch results');
-}
-
-const w_results = await weatherRes.json();
-console.log(w_results);
+  const w_results = await weatherRes.json();
+  console.log(w_results);
 };
-
 
 /*try {
   fetch('/v1/weather/geolocation?city=${city}')
@@ -42,4 +40,3 @@ console.log(w_results);
     temperature = temp.
     }
 })*/
-

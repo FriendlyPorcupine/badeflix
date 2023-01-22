@@ -1,5 +1,6 @@
 'use client';
 
+import { Card, Container, Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,7 +9,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
-import {Card, Container, Typography} from "@mui/material";
 
 const SignUpPage = () => {
   const emailRef = useRef<HTMLInputElement>();
@@ -31,11 +31,9 @@ const SignUpPage = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{padding: 10}}>
-      <Card sx={{padding: 5}} elevation={4} style={{borderRadius: 20}}>
-        <Typography variant="h3">
-          Register now
-        </Typography>
+    <Container maxWidth="sm" sx={{ padding: 10 }}>
+      <Card sx={{ padding: 5 }} elevation={4} style={{ borderRadius: 20 }}>
+        <Typography variant="h3">Register now</Typography>
         <TextField
           inputRef={emailRef}
           label="Enter e-mail"
@@ -51,7 +49,7 @@ const SignUpPage = () => {
           type="password"
           fullWidth
         />
-        <Alert severity="info" sx={{marginBottom: "15px", marginTop: "15px"}}>
+        <Alert severity="info" sx={{ marginBottom: '15px', marginTop: '15px' }}>
           Already registered? <Link href="/signin">Log in</Link> now!
         </Alert>
         <Button variant="contained" onClick={register}>

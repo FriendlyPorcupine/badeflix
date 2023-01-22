@@ -1,63 +1,39 @@
 'use client';
 
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import React, {useRef} from 'react';
-import {Container, Table, Typography} from "@mui/material";
-import {useRouter} from "next/navigation";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
+import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
+import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { FC, useRef, useState } from 'react';
+import {
+  TrafficLightGreen,
+  TrafficLightRed,
+} from '../src/components/TrafficLight';
+import { BathData, fetchBathData } from '../src/services/bath.service';
+import { fetchWeatherData, WeatherData } from '../src/services/weather.service';
 
-function createData(
-  bad: string,
-  wetter: number,
-  ampel: boolean,
-  distance: number,
-  time: number,
-
-) {
-  return {
-    Bad: bad,
-    Wetter: wetter,
-    Ampel: ampel,
-    Distanz: distance,
-    Wegzeit: time,
-    Route:
-      [
-        {
-          instruction: 'Gehen bis Gustav Pick Gasse',
-          distance: '63 m',
-          duration: '1 Minute'
-        },
-        {
-          instruction: 'Bus in Richtung Salmannsdorf',
-          distance: '2,8 km',
-          duration: '8 Minuten'
-        },
-        {
-          instruction: 'Gehen bis Salmannsdorfer Str., 1190 Wien, Österreich',
-          distance: '0,4 km',
-          duration: '6 Minuten'
-        },
-      ],
-  }
+interface RowProps {
+  row: BathData;
+  weather?: WeatherData;
 }
 
-function Row(props: { row: ReturnType<typeof createData> }) {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
+const Row: FC<RowProps> = ({ row, weather }) => {
+  const [open, setOpen] = useState(false);
 
   return (
-    <React.Fragment>
+    <>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell>
           <IconButton
@@ -68,13 +44,17 @@ function Row(props: { row: ReturnType<typeof createData> }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row"> {row.Bad}</TableCell>
-        <TableCell align="right">{row.Wetter}</TableCell>
-        <TableCell align="right">{row.Ampel}</TableCell>
-        {/* TODO: hat der Tobi angesagt:*/
-          /*== false ? <TrafficLightRed /> : TrafficLightGreen <TrafficLightRed} </TableCell>*/}
-        <TableCell align="right">{row.Distanz}</TableCell>
-        <TableCell align="right">{row.Wegzeit}</TableCell>
+        <TableCell component="th" scope="row">
+          {row.name}
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {weather?.temperature ?? ''} °C
+        </TableCell>
+        <TableCell align="right">
+          {row.available ? <TrafficLightGreen /> : <TrafficLightRed />}
+        </TableCell>
+        <TableCell align="right">{row.distance + ' km'}</TableCell>
+        <TableCell align="right">{row.duration}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -86,19 +66,19 @@ function Row(props: { row: ReturnType<typeof createData> }) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Activität</TableCell>
+                    <TableCell>Aktivität</TableCell>
                     <TableCell>Distanz</TableCell>
                     <TableCell align="right">Dauer</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.Route.map((historyRow) => (
-                    <TableRow key={historyRow.instruction}>
+                  {row.steps.map((step) => (
+                    <TableRow key={step.instruction}>
                       <TableCell component="th" scope="row">
-                        {historyRow.instruction}
+                        {step.instruction}
                       </TableCell>
-                      <TableCell>{historyRow.distance}</TableCell>
-                      <TableCell align="right">{historyRow.duration}</TableCell>
+                      <TableCell>{step.distance}</TableCell>
+                      <TableCell align="right">{step.duration}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -107,67 +87,78 @@ function Row(props: { row: ReturnType<typeof createData> }) {
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
-}
-
-const rows = [
-  //createData('Frozen yoghurt', 159, res.api bla bla von todolist, 24, 4.0, 3.99),
-  createData('Bad1', 15.9, false, 2.4, 16.0),
-  createData('Bad2', 23.7, true, 3.7, 18.3),
-  createData('Bad3', 26.2, false, 2.4, 17.0),
-];
-
+};
 
 const IndexPage = () => {
-  const addressRef = useRef<HTMLInputElement>();
-  const router = useRouter();
+  const streetRef = useRef<HTMLInputElement>();
+  const zipRef = useRef<HTMLInputElement>();
 
-  // takes the address (user input) and saves it as a string
-  const getAddressInput = async (address: any) => {
-    const addressToStr = address.toString();
-    console.log({addressToStr});
-    return encodeURI(addressToStr);
+  const [weather, setWeather] = useState<WeatherData | undefined>(undefined);
+  const [rows, setRows] = useState<BathData[]>([]);
+
+  const initializeTable = async () => {
+    const data = await Promise.all([
+      fetchBathData(
+        streetRef.current?.value ?? '',
+        zipRef.current?.value ?? '',
+      ),
+      fetchWeatherData('Wien'),
+    ]);
+    setWeather(data[1]);
+    setRows(data[0]);
   };
-  //@TODO HOW TO EXPORT/send address to result page
 
   return (
-    <><Container sx={{padding: 10}}>
-      <Typography variant="subtitle1">
-        To search for a bathing(? place, write your address in the search bar and click on search
-      </Typography>
-      <TextField
-        label="Search your address"
-        inputMode="search"
-        variant="filled"
-        margin="normal"
-        inputRef={addressRef}
-        fullWidth>
-      </TextField>
-      <Button variant="contained" onClick={() => getAddressInput(addressRef.current?.value)}>
-        Search
-      </Button>
-    </Container><TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell/>
-            <TableCell>Freibad</TableCell>
-            <TableCell align="right">Temperatur</TableCell>
-            <TableCell align="right">Ampel</TableCell>
-            <TableCell align="right">Distanz</TableCell>
-            <TableCell align="right">Wegzeit</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => <Row key={row.Bad} row={row}/>)}
-        </TableBody>
-      </Table>
-    </TableContainer></>
-  )
+    <>
+      <Container sx={{ padding: 10 }}>
+        <Typography variant="subtitle1">
+          To search for a bathing place, write your address in the search bar
+          and click on search
+        </Typography>
+        <TextField
+          label="Enter your street"
+          inputMode="search"
+          variant="filled"
+          margin="normal"
+          inputRef={streetRef}
+          fullWidth
+        />
+        <TextField
+          label="Enter your zip code"
+          inputMode="search"
+          variant="filled"
+          margin="normal"
+          inputRef={zipRef}
+          fullWidth
+        />
+        <Button variant="contained" fullWidth onClick={initializeTable}>
+          Search
+        </Button>
+      </Container>
+
+      <TableContainer component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>Freibad</TableCell>
+              <TableCell align="right">Temperatur</TableCell>
+              <TableCell align="right">Ampel</TableCell>
+              <TableCell align="right">Distanz</TableCell>
+              <TableCell align="right">Wegzeit</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <Row key={row.address} row={row} weather={weather} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
+  );
 };
 
 export default IndexPage;
-
-
-

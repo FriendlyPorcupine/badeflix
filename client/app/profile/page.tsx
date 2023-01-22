@@ -1,13 +1,12 @@
 'use client';
 
+import { Card, Container, Divider, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 import { toast } from 'react-hot-toast';
-import {Card, Container, Divider, Typography} from "@mui/material";
-import { useRouter } from 'next/navigation';
-
 
 const ProfilePage = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +20,7 @@ const ProfilePage = () => {
       });
       setEmail(fetchedUser.data.email);
     } catch (_) {
-       router.push('/signin');
+      router.push('/signin');
     }
   };
 
@@ -65,12 +64,15 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <Container maxWidth="md" sx={{padding: 10}}>
-      <Card sx={{padding: 5}} elevation={4} style={{borderRadius: 20}}>
+    <Container maxWidth="md" sx={{ padding: 10 }}>
+      <Card sx={{ padding: 5 }} elevation={4} style={{ borderRadius: 20 }}>
         <Typography variant="h3">Your profile </Typography>
-        <Divider><b>Update your info</b></Divider>
-        <Typography variant="subtitle2" sx={{paddingTop: 2}}>
-          To update your email or password, just type in the new one and click on "update user".
+        <Divider>
+          <b>Update your info</b>
+        </Divider>
+        <Typography variant="subtitle2" sx={{ paddingTop: 2 }}>
+          To update your email or password, just type in the new one and click
+          on "update user".
         </Typography>
         <TextField
           value={email}
@@ -91,8 +93,13 @@ const ProfilePage = () => {
         <Button variant="contained" onClick={updateUser}>
           Update User
         </Button>
-        <Divider sx={{paddingBottom: 2}}><b>Delete your account</b></Divider>
-        <Typography variant="subtitle2" sx={{paddingTop: 2, paddingBottom: 2}}>
+        <Divider sx={{ paddingBottom: 2 }}>
+          <b>Delete your account</b>
+        </Divider>
+        <Typography
+          variant="subtitle2"
+          sx={{ paddingTop: 2, paddingBottom: 2 }}
+        >
           To delete your user, just click on the button below:
         </Typography>
         <Button variant="contained" color="error" onClick={deleteUser}>
