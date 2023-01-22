@@ -15,17 +15,17 @@ You are also going to need a IDE, of course.
 Installing Nestjs:
 npm install nest.js
 
-Installing yarn via npm
+Installing yarn via npm:
 npm install yarn
 
 Copy content from example.env to a new file with ".env" within the same folder. The example file can be found in
 the server folder.
-Our project uses a Google Api, so please add your google api key to the env file under: 
+Our project uses a Google API, so please add your google API key to the env file under: 
 GOOGLE_DIRECTIONS_API_KEY=”******************************”
 
 Download Docker Desktop application and start it. Once running, proceed. If Docker is not active, server won't connect.
 
-**FIRST TIME SERVER:**
+**FIRST TIME USING SERVER:**
 Navigate to the server directory in your terminal & use the following commands:
 1. yarn install
 2. yarn docker:dev
