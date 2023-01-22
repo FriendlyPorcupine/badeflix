@@ -5,6 +5,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 
+
+
+
+
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -13,6 +17,7 @@ const Navbar = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+
   };
 
 
@@ -43,6 +48,7 @@ const Navbar = () => {
             horizontal: 'right',
           }}
         >
+
           <MenuItem onClick={handleClose}><Button><a href="/">Home</a></Button></MenuItem>
           <MenuItem onClick={handleClose}><Button><a href="/signup">Register</a></Button></MenuItem>
           <MenuItem onClick={handleClose}><Button><a href="/signin">Sign in</a></Button></MenuItem>
