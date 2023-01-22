@@ -1,16 +1,9 @@
 'use client';
 
-import {Button, Container, Typography} from "@mui/material";
-
+import { Button, Container, Typography } from '@mui/material';
 
 const BathingPlaces = () => {
-
-
-  return (
-    <Container>
-
-    </Container>
-  );
+  return <Container></Container>;
 };
 
 export default BathingPlaces;
