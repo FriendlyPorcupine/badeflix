@@ -13,9 +13,11 @@ If you don’t have yarn yet, please install and set up as your project’s pack
 You are also going to need a IDE, of course.
 
 Installing Nestjs:
+
 npm install nest.js
 
 Installing yarn via npm:
+
 npm install yarn
 
 Copy content from example.env to a new file with ".env" within the same folder. The example file can be found in
@@ -26,6 +28,7 @@ GOOGLE_DIRECTIONS_API_KEY=”******************************”
 Download Docker Desktop application and start it. Once running, proceed. If Docker is not active, server won't connect.
 
 **FIRST TIME USING SERVER:**
+
 Navigate to the server directory in your terminal & use the following commands:
 1. yarn install
 2. yarn docker:dev
@@ -37,11 +40,11 @@ To see the database in your browser (use this command, from your server director
 6. yarn prisma:studio 
 
 **CLIENT:**
+
 Now navigate to the client directory and type:
 1. yarn dev
 
-**
-STARTING SERVER, CLIENT & DATABASE (IF ALREADY INSTALLED):**
+**STARTING SERVER, CLIENT & DATABASE (IF ALREADY INSTALLED):**
 
 If you already installed everything, you only need to start the server and client.
 Before doing so, we recommend running yarn install from the server directory, in case some new dependencies have to be downloaded/updated.
@@ -64,14 +67,14 @@ Prisma Migrate automatically generates SQL database migrations, that are fully c
 
 
 **HOW TO USE:**
+
 First, make sure you are logged in (you can create a user by clicking the “Register” link in the menu on the top right corner).
 After registering, please log in with your email and password.
 Now you can search an address in Vienna (don’t forget to put the zip code), once you click on search, you will get a list of the bathing places that are closest to you.
 You will also get the temperature, the distance from your address to the places and if there’s availability or not. 
 By clicking on a bathing place, it will show you how to get there using public transportation.
 
-**
-REQUIREMENTS **
+**REQUIREMENTS**
 
 **MUSS**
 Das System muss in der Lage sein, eine "Eingabeleiste" anzuzeigen, damit der/die User*in eine Adresse eingeben kann.
