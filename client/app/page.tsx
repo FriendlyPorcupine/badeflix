@@ -115,7 +115,7 @@ const IndexPage = () => {
       <Container sx={{ padding: 10 }}>
         <Typography variant="subtitle1">
           To search for a bathing place, write your address in the search bar
-          and click on search
+          and click on search. Please keep in mind, you need to be logged in first for it to work!
         </Typography>
         <TextField
           label="Enter your street"
