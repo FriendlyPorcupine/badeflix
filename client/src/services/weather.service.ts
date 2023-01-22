@@ -9,6 +9,7 @@ export const fetchWeatherData = async (city: string) => {
     {
       credentials: 'include',
     },
+
   );
 
   if (!weatherRes.ok) {

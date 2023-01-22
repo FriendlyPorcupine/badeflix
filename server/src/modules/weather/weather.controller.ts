@@ -7,7 +7,7 @@ import { WeatherService } from './weather.service';
 export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
-  @UseGuards(AuthenticatedGuard)
+  //@UseGuards(AuthenticatedGuard)
   @Get('/geolocation')
   getGeolocation(@Query('city') city: string) {
     return this.weatherService.getGeoCoordinates(city);
